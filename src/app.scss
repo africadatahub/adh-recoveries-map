@@ -1,0 +1,181 @@
+$primary:       #094151;
+$control-grey: #DFE6E8;
+
+$theme-colors: (
+    "primary": $primary,
+    "control-grey": $control-grey,
+    "warning": #ffc107,
+    "light-grey": #f6f6f6
+);
+
+$border-radius: 6px;
+
+// $utilities: (
+//     "rounded": (
+//         property: border-radius,
+//         class: rounded,
+//         values: (
+//             4: 10px,
+//         )
+//     ),
+// );
+
+@import "node_modules/bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,500;0,600;1,700&display=swap');
+
+
+// div[class*="col"] {
+//     outline: 1px solid red;
+// }
+
+html {
+    font-size: 0.8rem;
+}
+
+body{
+    font-family: 'Work Sans', sans-serif;
+    background: #eceff0;
+    color: $primary
+}
+
+.card {
+    color: black
+}
+
+.header {
+    background: #F8F8F8
+}
+
+.navlinks button {
+    color: $primary;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 0.5em;
+    padding: 0.6em 1em;
+    
+    &:hover {
+        background: rgba(9, 65, 81, 0.1);
+        color: $primary;
+    }
+
+}
+
+
+
+h1 {
+    font-weight: 600
+}
+
+.country-select .dropdown-toggle::after {
+    margin-left: 3em;
+}
+
+.control-grey {
+    background: $control-grey;
+}
+
+.timeline-date-select button {
+    width: 100%;
+}
+
+.tooltip-inner {
+    background-color: $primary;
+    opacity: 1 !important;
+    font-size: 1.2em;
+}
+  
+.tooltip.bs-tooltip-right .arrow:before {
+    border-right-color: $primary !important;
+}
+  
+.tooltip.bs-tooltip-left .arrow:before {
+   border-left-color: $primary !important;
+}
+  
+.tooltip.bs-tooltip-bottom .arrow:before {
+   border-bottom-color: $primary !important;
+}
+  
+.tooltip.bs-tooltip-top .arrow:before {
+   border-top-color: $primary !important;
+}
+
+.badge-data-alert {
+    height: 25px !important;
+    width: 25px !important;
+    border-radius: 6px !important;
+}
+
+.badge-data-alert svg {
+    position: relative;
+    top: 5px;
+}
+
+.badge-data-alert path {
+    fill: $primary
+}
+
+.badge-inc-dec, .badge-ince-dec span {
+    color: #000 !important;
+}
+
+.chart-scale {
+    width: 10px !important;
+    height: 20px !important;
+    margin-right: 6px !important;
+}
+
+.noUi-target {
+    background: $control-grey !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 10px !important;
+}
+
+.noUi-horizontal {
+    height: 100% !important;
+}
+
+.noUi-horizontal .noUi-handle {
+    min-height:25px;
+    height: 100% !important;
+    top: 3px !important;
+    border-radius: 10px !important;
+    box-shadow: none !important;
+    background: $primary !important;
+    cursor: pointer !important;
+}
+
+.noUi-handle:before, .noUi-handle:after {
+    height: 10px !important;
+}
+
+.noUi-pips-horizontal {
+    top: 0 !important;
+}
+
+.noUi-value {
+    display: none;
+}
+
+.noUi-marker:first-child, .noUi-marker:nth-last-child(2) {
+    display:none !important;
+}
+
+.leaflet-container {
+    width: 100%; 
+    height: 530px;
+}
+
+hr {
+    opacity: 0.1 !important;
+}
+
+.form-select {
+    background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-size: unset !important;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
