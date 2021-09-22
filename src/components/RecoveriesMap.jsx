@@ -166,7 +166,7 @@ export class RecoveriesMap extends React.Component {
         layer.on('mouseover', function (e) {
             if(e.target.feature.properties.iso_a3 != 'SOL') {
                 layer.bindTooltip(function (layer) {
-                        let change = _.filter(self.props.data, function(o) { return o.iso_code == e.target.feature.properties.adm0_a3})[0].offset_recovery_ratio;
+                        let change = _.filter(self.props.data, function(o) { return o.iso_code == e.target.feature.properties.iso_a3})[0].offset_recovery_ratio;
                         if(change != null && change != undefined) {
                             change = (change > 0 ? '+' : '') + Math.round(change) + '%';
                         } else {
