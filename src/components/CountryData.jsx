@@ -25,7 +25,8 @@ export class CountryData extends React.Component {
         super();
         this.state = {
             selectedCountry: '',
-            selectedMetric: '',
+            selectedMetric_daily: '',
+            selectedMetric_cumulative: '',
             options: {},
             data: {}
         }
@@ -57,7 +58,26 @@ export class CountryData extends React.Component {
     }
 
     selectMetric = (e) => {
-        this.setState({selectedMetric: e.target.value})
+        if(e.target.value == 'daily_') {
+
+            this.setState({selectedMetric_daily: ''})
+
+        } else if(e.target.value == 'cumulative_') {
+
+            this.setState({selectedMetric_cumulative: ''})
+
+        } else {
+
+            if(e.target.value.includes('daily')) {
+                this.setState({selectedMetric_daily: e.target.value})
+            } else {
+                this.setState({selectedMetric_cumulative: e.target.value})
+            }
+
+        }
+
+
+        
     }
 
     downloadChart = () => {
@@ -121,26 +141,47 @@ export class CountryData extends React.Component {
                         </Row>
                         
                         <hr/>
-                        <Row className="mb-5">
-                            <Col xs="auto" className="position-relative"><div className="position-relative top-50 start-50 translate-middle"><strong>Overlay dataset:</strong></div></Col>
-                            <Col>
+                        
+
+                        <Row className="my-4 justify-content-between">
+                            <Col xs="auto" className="position-relative">
+                                <div className="position-relative top-50 start-50 translate-middle">
+                                    <h5>Daily Recoveries</h5>
+                                </div>
+                            </Col>
+                            <Col xs="auto">
                                 <Form.Select className="border-0" style={{backgroundColor: '#F6F6F6'}} onChange={this.selectMetric}>
-                                    <option value="">Add a comparison metric</option>
-                                    <option value="cases">Cases</option>
-                                    <option value="tests">Tests</option>
-                                    <option value="vac_1">Vaccinations</option>
-                                    <option value="deaths">Deaths</option>
+                                    <option value="daily_">{self.state.selectedMetric_daily == '' ? 'Add a comparison metric' : 'Remove comparison'}</option>
+                                    <option value="daily_cases">Daily Cases</option>
+                                    <option value="daily_tests">Daily Tests</option>
+                                    <option value="daily_vac_1">Daily Vaccinations</option>
+                                    <option value="daily_deaths">Daily Deaths</option>
+                                </Form.Select>   
+                            </Col>
+                        </Row>
+                        
+                        <Chart data={self.state.data} field="daily_recoveries" overlay={self.state.selectedMetric_daily}/>
+
+                        <hr/>
+
+                        <Row className="my-4 justify-content-between">
+                            <Col xs="auto" className="position-relative">
+                                <div className="position-relative top-50 start-50 translate-middle">
+                                    <h5>Cumulative Recoveries</h5>
+                                </div>
+                            </Col>
+                            <Col xs="auto">
+                                <Form.Select className="border-0" style={{backgroundColor: '#F6F6F6'}} onChange={this.selectMetric}>
+                                    <option value="cumulative_">{self.state.selectedMetric_cumulative == '' ? 'Add a comparison metric' : 'Remove comparison'}</option>
+                                    <option value="cumulative_cases">Cumulative Cases</option>
+                                    <option value="cumulative_tests">Cumulative Tests</option>
+                                    <option value="cumulative_vac_1">Cumulative Vaccinations</option>
+                                    <option value="cumulative_deaths">Cumulative Deaths</option>
                                 </Form.Select>   
                             </Col>
                         </Row>
 
-                        <h5>Daily Recoveries</h5>
-                        
-                        <Chart data={self.state.data} field="daily_recoveries" overlay={'daily_' + self.state.selectedMetric}/>
-
-                        <h5 className="mt-5">Cumulative Recoveries</h5>
-
-                        <Chart data={self.state.data} field="cumulative_recoveries" overlay={'cumulative_' + self.state.selectedMetric}/>
+                        <Chart data={self.state.data} field="cumulative_recoveries" overlay={self.state.selectedMetric_cumulative}/>
 
                         <Row className="align-items-center mt-5">
                             <Col><span className="text-black-50">Source: <a href="https://au.int/en/africacdc" className="text-reset text-decoration-none" target="_blank">AfricaCDC</a></span></Col>
